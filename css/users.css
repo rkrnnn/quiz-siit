@@ -120,7 +120,6 @@ body {
 }
 /*  */
 
-  
 
 .controls {
     display: flex;
@@ -147,7 +146,6 @@ body {
 }
 
 .pseudo-btn {
-    /* border: 1.5px solid #82c0cc; */
     border-radius: 4px;
     color: #82c0cc;
     display: inline-block;
@@ -220,9 +218,7 @@ ul li::marker {
 
 .user-questions::-webkit-scrollbar {
     width: 9px;
-    
 }
-
 
 .user-questions::-webkit-scrollbar-thumb {
     background-color: #16697A;  
