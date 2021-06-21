@@ -61,6 +61,11 @@ body {
     align-items: center;
 }
 
+.q-date-added {
+    font-size: 10pt;
+    color: #82c0d5;
+}
+
 .title {
     color: #16697A;
     font-family: 'Fredoka One', cursive;
@@ -223,7 +228,7 @@ ul li::marker {
 .user-questions::-webkit-scrollbar-thumb {
     background-color: #16697A;  
     /* color of the scroll thumb  */
-    border-radius: 20px;       /* roundness of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
     border: 2px solid #e6f3f5;  /* creates padding around scroll thumb */
 }
 

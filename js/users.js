@@ -16,6 +16,7 @@ validateLogin(getData);
 prepareDisplay();
 
 
+
 function prepareDisplay() {
     var i = 0;
     while (i < loadingsGraphics.length) {
@@ -36,22 +37,29 @@ function displayVarInPlace(variable, nodeList) {
     }
 }
 
+function displayUserQuestions(id) {
+    getQuestions(id);
+}
+
+
 
 function getData(json) {
     console.log(json);
     displayVarInPlace(json.name, userNameDisplay);
     displayVarInPlace(json.email, emailAddressDisplay);
 
+    displayUserQuestions(json.id);
+    
     pageDisplay.style.display = "";
-
+    
     var date = new Date(json.created_at);
     displayVarInPlace(date.toLocaleString('ro-RO'), dateAccountCreatedDisplay);
     var date = new Date(json.updated_at);
     displayVarInPlace(date.toLocaleString('ro-RO'), dateAccountModifiedDisplay);
-
+    
     welcomeMsg.style.display = "";
     profileDisplay.style.display = "";
-
+    
     var i = 0;
     while (i < loadingsGraphics.length) {
         loadingsGraphics[i].style.display = "none";
