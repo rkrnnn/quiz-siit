@@ -87,6 +87,41 @@ body {
     margin-bottom: 18px;
 }
 
+.modal-header button {
+    font-size: 30px;
+}
+
+div .modal-header {
+    padding: 8px;
+}
+
+.modal-header .subtitle {
+    margin-left: 12px;
+}
+
+.modal-answers {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    align-content: stretch;
+}
+
+.modal-answers div.form-floating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.modal-answers input[type=radio] {
+    margin: 12px;
+    width: 22px;
+    height: 20px;
+}
+
 /* Loading graphics from https://loading.io/css/ */
 .lds-ring {
     display: inline-block;
@@ -173,8 +208,14 @@ body {
 }
 
 .alert-style {
-    background-color: #c1ebf3;
-    color: #16697A;
+    background-color: #ffeed4;
+    color: #ff7b00;
+    border: 1px solid #FFA62B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    align-content: center;
 }
 
 .alert-results {
@@ -298,4 +339,25 @@ ul li::marker {
 .correct-answ {
     background-color: #5db0362e;
     border-radius: 4px;
+}
+
+.radio-select:checked {
+    background-color: #82C0CC;
+    border-color: #82C0CC;
+}
+
+.answer-radio {
+    height: 26px;
+    margin: 4px;
+    margin-left: 0px;
+    padding-left: 30px;
+    border-radius: 4px;
+}
+
+.answer-radio:hover {
+    background-color: #c1ebf3;
+}
+
+.answer-radio:checked {
+    background-color: #c1ebf3;
 }

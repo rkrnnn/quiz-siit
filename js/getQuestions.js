@@ -1,57 +1,63 @@
 console.log('getQuestions.js loaded');
 
 var userQuestionsDisplay = document.querySelector(".user-question-ol");
-console.log(userQuestionsDisplay);
+var userQuestionsAlertNone = document.querySelector(".alert-info");
+
+var authKey = localStorage.getItem('authKey');
 
 const url = new URL(
-    "http://quiz.siit.ro/api/questions"
+    "http://quiz.siit.ro/api/questions/own"
 );
 
 let headers = {
+    "Authorization": "Bearer " + authKey,
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
-function getQuestions(id) {
+
+function getQuestions() {
     fetch(url, {
         method: "GET",
         headers,
     }).then(response => response.json()
-    .then (data => parseQuestions(data, id)));
+    .then (data => parseQuestions(data)));
 }
 
-function parseQuestions(json, id) {
-    // console.log(json);
+function parseQuestions(json) {
     var i = 0;
     while (i < json.length) {
-        // console.log('This questions was added by user with ID ' + json[i].user_id);
+        var userQuestionLI = document.createElement("LI");
+        userQuestionLI.id = 'question-' + json[i].id;
+        userQuestionLI.classList.add('user-question');
 
-        if (json[i].user_id == id) {
-            var userQuestionLI = document.createElement("LI");
-            userQuestionLI.id = 'question-' + json[i].id;
-            userQuestionLI.classList.add('user-question');
-    
-            var userQuestionHeader = document.createElement("DIV");
-            userQuestionHeader.classList.add('user-question-header');
-            
-            var questionTxtDiv = createQuestionText(json[i]);
-            userQuestionHeader.appendChild(questionTxtDiv);  
-            var questionControls = createControls();
-    
-            var dateCreated = createDateDiv(json[i]);
-    
-            var userAnswersGroup = createAnswersGroup(json[i]);
-    
-            userQuestionHeader.appendChild(questionControls); 
-            
-            userQuestionLI.appendChild(userQuestionHeader);
-            userQuestionLI.appendChild(dateCreated);
-            userQuestionLI.appendChild(userAnswersGroup);
-            
-            userQuestionsDisplay.appendChild(userQuestionLI);
-        }
+        var userQuestionHeader = document.createElement("DIV");
+        userQuestionHeader.classList.add('user-question-header');
+        
+        var questionTxtDiv = createQuestionText(json[i]);
+        userQuestionHeader.appendChild(questionTxtDiv);  
+        var questionControls = createControls();
+
+        var dateCreated = createDateDiv(json[i]);
+
+        var userAnswersGroup = createAnswersGroup(json[i]);
+
+        userQuestionHeader.appendChild(questionControls); 
+        
+        userQuestionLI.appendChild(userQuestionHeader);
+        userQuestionLI.appendChild(dateCreated);
+        userQuestionLI.appendChild(userAnswersGroup);
+        
+        userQuestionsDisplay.appendChild(userQuestionLI);
         
         i++;
+    }
+    
+    if (json.length == 0) {
+        userQuestionsAlertNone.style.display = "";
+    }
+    else {
+        userQuestionsAlertNone.style.display = "none";
     }
 
 }

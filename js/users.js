@@ -44,7 +44,7 @@ function displayUserQuestions(id) {
 
 
 function getData(json) {
-    console.log(json);
+    // console.log(json);
     displayVarInPlace(json.name, userNameDisplay);
     displayVarInPlace(json.email, emailAddressDisplay);
 
