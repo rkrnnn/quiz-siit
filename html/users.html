@@ -39,40 +39,36 @@
             <div class="modal-body modal-answers">
                 <div class="form-info">Add quirky answers and check which one is the correct one.<br></div>
 
+                <div class="answers-incomplete alert alert-danger" style="display: none;">
+                    You need to mark at least one answer as correct.<br> Please check and try again.
+                </div>
+
                 <div class="form-floating mb-3 input-grp ">
                     <input type="answer" class="form-control answ01" id="floatingInput" value="Answer 01">
                     <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ01"> 
                     <label for="floatingInput">Answer</label>
-                    <div class="invalid-feedback">
-                    </div>
                 </div>
                 <div class="form-floating mb-3 input-grp ">
                     <input type="answer" class="form-control answ02" id="floatingInput" value="Answer 02"> 
                     <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ02">
                     <label for="floatingInput">Answer</label>
-                    <div class="invalid-feedback">
-                    </div>
                 </div>
                 <div class="form-floating mb-3 input-grp ">
                     <input type="answer" class="form-control answ03" id="floatingInput" value="Answer 03"> 
                     <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ03">
                     <label for="floatingInput">Answer</label>
-                    <div class="invalid-feedback">
-                    </div>
                 </div>
                 <div class="form-floating mb-3 input-grp ">
                     <input type="answer" class="form-control answ04" id="floatingInput" value="Answer 04"> 
                     <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ04">
                     <label for="floatingInput">Answer</label>
-                    <div class="invalid-feedback">
-                    </div>
                 </div>
 
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn pseudo-btn" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn-generic btn btn-primary" onclick="addQuestion()" data-bs-dismiss="modal">Save question</button>
+                <button type="button" class="btn-generic btn btn-primary" onclick="addQuestion()">Save question</button>
             </div>
         </div>
         </div>

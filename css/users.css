@@ -255,18 +255,18 @@ ul li::marker {
 
 /* Scroll container */
 
-.user-questions {
+.user-question-ol {
     overflow-y: scroll;
     scroll-behavior: smooth;
     height: 78vh;
     min-height: 78vh;
 }
 
-.user-questions::-webkit-scrollbar {
+.user-question-ol::-webkit-scrollbar {
     width: 9px;
 }
 
-.user-questions::-webkit-scrollbar-thumb {
+.user-question-ol::-webkit-scrollbar-thumb {
     background-color: #16697A;  
     /* color of the scroll thumb  */
     border-radius: 10px;       /* roundness of the scroll thumb */
