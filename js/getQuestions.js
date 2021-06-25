@@ -1,7 +1,7 @@
 console.log('getQuestions.js loaded');
 
 var userQuestionsDisplay = document.querySelector(".user-question-ol");
-var userQuestionsAlertNone = document.querySelector(".alert-info");
+var userQuestionsAlertNone = document.querySelector(".alert-no-q");
 
 var authKey = localStorage.getItem('authKey');
 
@@ -89,6 +89,7 @@ function createControls() {
     deleteBtn.classList.add('btn');
     deleteBtn.classList.add('pseudo-btn');
     deleteBtn.classList.add('btn-delete');
+    deleteBtn.setAttribute("onclick","removeQuestion(event)");
 
     questionControls.appendChild(deleteBtn);
 

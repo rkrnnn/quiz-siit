@@ -24,7 +24,7 @@ function prepareDisplay() {
         i++;
     }
 
-    pageDisplay.style.display = "none";
+    // pageDisplay.style.display = "none";
 }
 
 

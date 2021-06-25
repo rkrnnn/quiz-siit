@@ -20,19 +20,23 @@
         <div class="modal-content user-questions" style="overflow-y: hidden;">
             <div class="modal-header questions-section">
                 <h5 class="modal-title subtitle" id="exampleModalLabel">Add new question</h5>
-                <button type="button" class="btn pseudo-btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle"></i></button>
+                <button type="button" class="btn pseudo-btn" data-bs-dismiss="modal" aria-label="Close" onclick="closeSession()"><i class="bi bi-x-circle"></i></button>
             </div>
             <div class="modal-body">
 
-                <div class="alert-unsuccessful alert alert-danger" style="display: none;">
+                <div class="alert-unsuccessful alert alert-danger smth-went-wrong" style="display: none;">
                     There was a problem with the data entered.<br> Please check and try again.
+                </div>
+                <div class="alert alert-success question-added-success" style="display: none;">
+                    Question added.
                 </div>
 
                 <div class="form-info">Add a quirky question.<br></div>
-                <div class="form-floating mb-3 input-grp ">
-                    <input type="question" class="form-control add-q" id="floatingInput" value="Question01"> 
+                <div class="form-floating mb-2 input-grp ">
+                    <input type="question" class="form-control add-q" id="floatingInput" value="Who did the Romanian Government want to ban in 1935?" placeholder="etc"> 
                     <label for="floatingInput">Question text</label>
                     <div class="invalid-feedback">
+                        You need to add a question.
                     </div>
                 </div>
             </div>
@@ -42,33 +46,41 @@
                 <div class="answers-incomplete alert alert-danger" style="display: none;">
                     You need to mark at least one answer as correct.<br> Please check and try again.
                 </div>
+                <div class="answers-incomplete-text alert alert-danger" style="display: none;">
+                    You need to add exactly 4 answers.<br> Please check and try again.
+                </div>
 
-                <div class="form-floating mb-3 input-grp ">
-                    <input type="answer" class="form-control answ01" id="floatingInput" value="Answer 01">
-                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ01"> 
+                <div class="  form-floating mb-2 input-grp ">
+                    <input type="answer" class="form-control answ01" id="floatingInput" value="Chuck Norris" placeholder="etc">
+                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value=""> 
                     <label for="floatingInput">Answer</label>
                 </div>
-                <div class="form-floating mb-3 input-grp ">
-                    <input type="answer" class="form-control answ02" id="floatingInput" value="Answer 02"> 
-                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ02">
+                <div class="form-floating mb-2 input-grp ">
+                    <input type="answer" class="form-control answ02" id="floatingInput" value="Mickey Mouse" placeholder="etc"> 
+                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value="">
                     <label for="floatingInput">Answer</label>
                 </div>
-                <div class="form-floating mb-3 input-grp ">
-                    <input type="answer" class="form-control answ03" id="floatingInput" value="Answer 03"> 
-                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ03">
+                <div class="form-floating mb-2 input-grp ">
+                    <input type="answer" class="form-control answ03" id="floatingInput" value="Dracula" placeholder="etc"> 
+                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value="">
                     <label for="floatingInput">Answer</label>
                 </div>
-                <div class="form-floating mb-3 input-grp ">
-                    <input type="answer" class="form-control answ04" id="floatingInput" value="Answer 04"> 
-                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value="answ04">
+                <div class="form-floating mb-2 input-grp ">
+                    <input type="answer" class="form-control answ04" id="floatingInput" value="Mihai Eminescu" placeholder="etc"> 
+                    <input type="radio" class="form-check-input radio-select" name="correct-answ" value="" >
                     <label for="floatingInput">Answer</label>
                 </div>
 
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn pseudo-btn" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn-generic btn btn-primary" onclick="addQuestion()">Save question</button>
+                <div>
+                    Questions added: <span class="variables">0</span> 
+                </div>
+                <div class="controls">
+                    <button type="button" class="btn pseudo-btn" data-bs-dismiss="modal" onclick="closeSession()">Close</button>
+                    <button type="button" class="btn-generic btn btn-primary" onclick="addQuestion()">Save question</button>
+                </div>
             </div>
         </div>
         </div>
@@ -126,7 +138,7 @@
                                 <i class="bi bi-journal-plus"></i>
                                 Add new question
                             </button>
-                            <button class="btn-generic btn btn-secondary" onclick="">
+                            <button class="btn-generic btn btn-secondary" onclick="refreshQuestionList()">
                                 <i class="bi bi-arrow-counterclockwise"></i>
                                 Refresh
                             </button>
@@ -134,8 +146,14 @@
                     </div>
                     
                     <div class="user-questions">
-                        <div class="alert alert-info alert-style" role="alert" >
+                        <div class="alert alert-info alert-style alert-no-q" role="alert" >
                             <i class="bi bi-info-circle-fill" style="font-size: 26px; margin-right: 10px;" ></i>    No questions added.
+                        </div>
+                        <div class="alert alert-info alert-style alert-new-q" role="alert" style="display: none">
+                            <i class="bi bi-emoji-laughing"  style="font-size: 26px; margin-right: 10px;" ></i>    New questions added. Refresh to load them.
+                        </div>
+                        <div class="alert alert-danger alert-style alert-cannot-delete" role="alert" style="display: none">
+                            <i class="bi bi-emoji-dizzy" style="font-size: 26px; margin-right: 10px;"></i> Something went wrong.
                         </div>
 
                         <ol class="user-question-ol">
@@ -200,6 +218,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script src="../js/addQuestion.js"></script>
+    <script src="../js/removeQuestion.js"></script>
     <script src="../js/getQuestions.js"></script>
     <script src="../js/validateLogin.js"></script>
     <script src="../js/users.js"></script>
